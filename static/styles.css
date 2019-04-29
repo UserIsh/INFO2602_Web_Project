@@ -1,0 +1,172 @@
+/* main style for the app */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+    padding-bottom: 4px;
+    margin-bottom: 4px;
+    font-family: 'EB Garamond';
+    background: url(background.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-size: 18px;
+    color: #008B8B;
+    width:100%;
+    max-width:100%;
+    height:auto;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    list-style: none;
+    font-size: 20px;
+}
+
+form {
+    width: 30%;
+    height: 100%;
+}
+
+a {
+    text-decoration:none;
+    color: white;
+}
+
+a:link {
+    text-decoration:none;
+    color: white;
+}
+
+a:hover {
+    text-decoration:none;
+    color: orange;
+}
+
+a:active {
+    text-decoration:none;
+    color: lightblue;
+}
+
+input[type] {
+    border: 2px solid green;
+    border-radius: 4px;
+    background-color: lightgreen;
+}
+
+input[type]:focus {
+    background-color: lightblue;
+}
+
+.comment {
+    width: 100%;
+}
+
+.indent {
+    text-indent: 2em;
+}
+
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.centerContent {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.center {
+    text-align: center;
+}
+
+.fontSize {
+   font-size: 16px;
+}
+
+.text {
+     width: inherit;
+     white-space: nowrap;
+     overflow: hidden;
+     text-overflow: ellipsis;
+     font-size: 16px;
+}
+
+.box {
+    float: left;
+    width: 20rem;
+    margin: 4px;
+}
+
+.textWhite {
+    color: white;
+}
+
+.title {
+    font-size:7vw;   
+}
+
+.formMargin {
+  margin-top: 10%;
+}
+
+.route:hover, .brand:hover, .btn:hover {
+    color: orange;
+}
+
+#book {
+    float: left;
+    width: 16rem;
+    max-width: 18rem;
+    margin: 6px;
+    height: 24rem;
+    max-height: 24rem;
+    text-align: center;
+}
+
+#bookImage {
+  display: block;
+  margin: 0 auto;
+  height: 200px;
+  width: 40%;
+}
+
+#imgDetails {
+    margin-left: 40%;
+    height: 300px;
+    width: 20%;
+    display: block;
+}
+
+#inlineForm {
+    display: inline;
+}
+
+@-ms-viewport {
+  width: device-width;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  body {
+    background-size: 100% 100%;
+    background-repeat: repeat-y;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  body {
+    background-size: 100% 100%;
+    background-repeat: repeat-y;
+  }
+} 

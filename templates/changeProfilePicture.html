@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  Modify Profile Picture
+{% endblock %}
+
+{% block main %}
+  <form role="form" class="centerContent formMargin" action="{{ url_for('changeProfilePicture') }}" method="post">
+    <fieldset>
+      <legend>Chane profile picture</legend>
+      <div class="form-group">
+        <label for="profilePicture">Enter URL for New Image:</label>
+        <input class="form-control" id="profilePicture" name="profilePicture" placeholder="https://i.imgur.com/sample" type="url"
+               required>
+        <br><br><button class="btn btn-lg btn-warning centerContent" type="submit">Change</button>
+      </div>
+    </fieldset>
+  </form>
+{% endblock %}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js""></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+        <link href="https://fonts.googleapis.com/css?family=EB+Garamond&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+        <link rel="stylesheet" href="https://bootswatch.com/4/minty/bootstrap.min.css"/>
+        <link rel="stylesheet" href="https://bootswatch.com/4/minty/bootstrap.css"/>
+        <link rel="stylesheet" href="https://bootswatch.com/4/minty/_bootswatch.scss"/>
+        <link rel="stylesheet" href="https://bootswatch.com/4/minty/_variables.scss"/>
+
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"/>
+
+
+        <script type="text/javascript" src="https://books.google.com/books/previewlib.js"></script>
+
+        <title>CS50 Book evaluator: {% block title %}{% endblock %}</title>
+    </head>
+    <body>
+
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+                <a title="Home" class="navbar-brand" href="{{ url_for('index') }}"><span class="brand">EvaLib - Read, Rate, Share!</span></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a title="Search the book" class="nav-link" href="{{ url_for('search') }}">
+                                <span class="route badge badge-info">Search</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a title="Post or read" class="nav-link" href="{{ url_for('blog') }}">
+                                <span class="route badge badge-info">Blog</span>
+                            </a>
+                        </li>
+
+                        {% if session.user_id %}
+                            <li class="nav-item">
+                                <a title="Profile" class="nav-link" href="{{ url_for('profile') }}">
+                                    <span class="route badge badge-info">Profile</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                        <!--if user is administator, show this route-->
+                        {% if session.email %}
+                            <li class="nav-item">
+                                <a title="See all registered users" class="nav-link" href="{{ url_for('users') }}">
+                                    <span class="route badge badge-info">Users</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                    <ul class="navbar-nav">
+                        <!--if user not logged in, show these routes-->
+                        {% if not session.user_id %}
+                            <li class="nav-item">
+                                <a title="Login" class="nav-link" href="{{ url_for('login') }}">
+                                    <span class="route badge badge-info">Login</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a title="Sign Up!" class="nav-link" href="{{ url_for('register') }}">
+                                    <span class="route badge badge-info">Register</span>
+                                </a>
+                            </li>
+                        <!--else if user is logged in, then show this route-->
+                        {% else %}
+                            <li class="nav-item">
+                                <a title="Logout" class="nav-link" href="{{ url_for('logout') }}">
+                                    <span class="route badge badge-info">Logout</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                        <li class="nav-item">
+                            <a title="CS50 Project" class="nav-link" href="{{ url_for('about') }}">
+                                <span class="route badge badge-info">About</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <!--display flash messages-->
+            {% if get_flashed_messages() %}
+                <header>
+                    <div class="alert alert-info" role="alert">
+                        {{ get_flashed_messages() | join(" ") }}
+                    </div>
+                </header>
+            {% endif %}
+            <main>
+                {% block main %}{% endblock %}
+            </main>
+        </div>
+        <script>
+            // style active route
+            $(document).ready(function() {
+                $('.route').click(function() {
+                    $(this).addClass('badge-warning');
+                });
+            });
+        </script>
+    </body>
+</html>

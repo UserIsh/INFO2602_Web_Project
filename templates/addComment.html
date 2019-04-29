@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  Add a Comment
+{% endblock %}
+
+{% block main %}
+  <form role="form" class="centerContent formMargin" action="{{ url_for('addComment', book_id = book_id) }}" method="post">
+    <fieldset>
+      <legend>Add a new comment</legend>
+      <div class="form-group">
+        <label for="comment">Leave a Comment:</label>
+        <textarea id="comment" name="comment" class="form-control" placeholder="What do you have to say?" required rows="8"
+                  maxlength="440"></textarea>
+      </div>
+      <button class="btn btn-lg btn-success centerContent" type="submit">Comment</button>
+    </fieldset>
+  </form>
+{% endblock %}
