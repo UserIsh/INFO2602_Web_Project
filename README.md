@@ -28,4 +28,4 @@ The library functionality is enabled using the [Google Books API](https://develo
 - `export FLASK_DEBUG=1`
 - `flask run`
 
-App can be access locally using http://127.0.0.1:5000 or at .
+App can be access locally using http://127.0.0.1:5000 or at https://info2602-project-google-books.herokuapp.com/ .
